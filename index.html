@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BG Remover | AI-Powered Background Removal</title>
+    <title>Prompt Minds BG Remover | AI-Powered Background Removal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Base Styles */
@@ -14,57 +14,97 @@
             font-family: 'Inter', system-ui, sans-serif;
         }
 
-        /* Navigation */
-        .navbar {
-            background: white;
-            padding: 1rem 5%;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+        body {
+            background: #0B0C10;
+            color: #C5C6C7;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .header {
+            background: #1F2833;
+            padding: 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            animation: fadeInDown 1s;
         }
 
         .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: #FF4D80;
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
         }
 
-        .logo i {
-            color: #4a90e2;
-        }
-
-        .nav-list {
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #66FCF1, #45A29E);
+            border-radius: 50%;
             display: flex;
-            gap: 2.5rem;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1rem;
+        }
+
+        .logo-circle span {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1F2833;
+        }
+
+        .header h1 {
+            color: #66FCF1;
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Navigation Styles */
+        .toolbar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
             list-style: none;
         }
 
-        .nav-link {
+        .nav-links a {
+            color: #C5C6C7;
             text-decoration: none;
-            color: #2d3748;
-            font-weight: 500;
-            transition: all 0.3s ease;
             padding: 0.5rem 1rem;
-            border-radius: 8px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
         }
 
-        .nav-link:hover {
-            background: #f8f9fa;
-            color: #FF4D80;
+        .nav-links a:hover {
+            background: #66FCF1;
+            color: #1F2833;
+            transform: translateY(-2px);
+        }
+
+        /* Toggle Button */
+        .toggle-button {
+            background: #66FCF1;
+            color: #1F2833;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-button:hover {
+            background: #45A29E;
+            transform: translateY(-2px);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #FF4D80 0%, #FF9500 100%);
+            background: linear-gradient(135deg, #1F2833, #0B0C10);
             padding: 160px 20px 120px;
             text-align: center;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
@@ -72,7 +112,7 @@
         }
 
         .hero h1 {
-            background: linear-gradient(45deg, #fff, #f3f4f6);
+            background: linear-gradient(45deg, #66FCF1, #45A29E);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -87,11 +127,11 @@
         /* Steps Section */
         .steps-container {
             padding: 4rem 5%;
-            background: #f8f9fa;
+            background: #0B0C10;
         }
 
         .step-card {
-            background: white;
+            background: #1F2833;
             padding: 2.5rem;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
@@ -109,31 +149,31 @@
         .step-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #FF4D80 0%, #FF9500 100%);
+            background: linear-gradient(135deg, #66FCF1, #45A29E);
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: #1F2833;
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
         }
 
         .step-card h3 {
-            color: #1a202c;
+            color: #66FCF1;
             margin-bottom: 1rem;
             font-size: 1.5rem;
         }
 
         .step-card p {
-            color: #4a5568;
+            color: #C5C6C7;
             line-height: 1.6;
         }
 
         /* Upload Button */
         .upload-btn {
-            background: linear-gradient(135deg, #FF4D80 0%, #FF9500 100%);
-            color: white;
+            background: linear-gradient(135deg, #66FCF1, #45A29E);
+            color: #1F2833;
             padding: 1.2rem 3rem;
             border: none;
             border-radius: 15px;
@@ -143,13 +183,13 @@
             display: inline-flex;
             align-items: center;
             gap: 1rem;
-            box-shadow: 0 10px 30px rgba(255,77,128,0.3);
+            box-shadow: 0 10px 30px rgba(102, 252, 241, 0.3);
             font-weight: 600;
         }
 
         .upload-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(255,77,128,0.4);
+            box-shadow: 0 15px 40px rgba(102, 252, 241, 0.4);
         }
 
         /* Download Button */
@@ -160,8 +200,8 @@
         }
 
         .download-btn {
-            background: linear-gradient(135deg, #4a90e2 0%, #9013fe 100%);
-            color: white;
+            background: linear-gradient(135deg, #66FCF1, #45A29E);
+            color: #1F2833;
             padding: 1.2rem 3rem;
             border: none;
             border-radius: 50px;
@@ -171,7 +211,7 @@
             display: inline-flex;
             align-items: center;
             gap: 1rem;
-            box-shadow: 0 10px 30px rgba(74,144,226,0.3);
+            box-shadow: 0 10px 30px rgba(102, 252, 241, 0.3);
             font-weight: 600;
             position: relative;
             overflow: hidden;
@@ -197,7 +237,7 @@
 
         .download-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(74,144,226,0.4);
+            box-shadow: 0 15px 40px rgba(102, 252, 241, 0.4);
         }
 
         .download-btn i {
@@ -210,7 +250,7 @@
             width: 40px;
             height: 40px;
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #FF4D80;
+            border-top: 4px solid #66FCF1;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 2rem auto;
@@ -236,6 +276,52 @@
             margin-top: 1rem;
         }
 
+        /* Footer Styles */
+        .footer {
+            background: #1F2833;
+            padding: 2rem 1rem;
+            margin-top: 2rem;
+            text-align: center;
+            color: #C5C6C7;
+            border-top: 2px solid #66FCF1;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #C5C6C7;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #66FCF1;
+            transform: translateY(-2px);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: #C5C6C7;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #66FCF1;
+            transform: translateY(-2px);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
@@ -243,7 +329,7 @@
                 padding: 0 1rem;
             }
             
-            .nav-list {
+            .nav-links {
                 gap: 1rem;
             }
             
@@ -259,15 +345,23 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="#" class="logo"><i class="fas fa-wand-magic-sparkles"></i>BG Remover</a>
-        <ul class="nav-list">
-            <li><a href="#remove" class="nav-link">Remove Background</a></li>
-            <li><a href="#features" class="nav-link">Features</a></li>
-            <li><a href="#business" class="nav-link">For Business</a></li>
-            <li><a href="#pricing" class="nav-link">Pricing</a></li>
-        </ul>
-    </nav>
+    <header class="header">
+        <div class="logo">
+            <div class="logo-circle">
+                <span>PM</span>
+            </div>
+            <h1>Prompt Minds</h1>
+        </div>
+        <div class="toolbar">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="toggle-button">Toggle View</button>
+        </div>
+    </header>
 
     <section class="hero">
         <h1>Transform Your Images with One Click</h1>
@@ -307,6 +401,22 @@
         </button>
     </div>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#contact">Contact Us</a>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p>&copy; 2023 Prompt Minds. All rights reserved.</p>
+    </footer>
+
     <script>
         const realInput = document.getElementById('real-input');
         const preview = document.getElementById('preview');
@@ -343,7 +453,7 @@
         });
 
         async function processImage(file) {
-            const apiKey = '--------------------------------------';
+            const apiKey = 'Z1NQnQCPdNfaxgSLLKEbSem4';
             const formData = new FormData();
             formData.append('image_file', file);
 
@@ -360,4 +470,3 @@
     </script>
 </body>
 </html>
-  
